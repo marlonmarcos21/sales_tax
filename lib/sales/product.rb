@@ -4,6 +4,6 @@ class Product
   def initialize(qty, product, price)
     @quantity = qty
     @product  = product
-    @price    = price
+    @price    = BigDecimal.new(price, 4)
   end
 end

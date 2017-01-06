@@ -1,4 +1,10 @@
 class Tax
+  class << self
+    def calculate_tax(product)
+      new(product).sales_tax
+    end
+  end
+
   attr_reader :product, :tax_rate
 
   def initialize(product)
@@ -8,7 +14,7 @@ class Tax
 
   def sales_tax
     tax = round(product.price * tax_rate)
-    (tax * product.quantity).round(2)
+    tax * product.quantity
   end
 
   private
@@ -21,8 +27,8 @@ class Tax
                   0.1
                 end
 
+    @tax_rate = BigDecimal.new(@tax_rate, 4)
     @tax_rate += 0.05 if item_name.include?('imported')
-    @tax_rate = @tax_rate.round(2)
   end
 
   def round(x)

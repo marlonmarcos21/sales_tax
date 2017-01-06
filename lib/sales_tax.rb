@@ -1,3 +1,2 @@
-require_relative 'sales/product'
-require_relative 'sales/invoice'
-require_relative 'sales/tax'
+require 'bigdecimal'
+Dir["./sales/*.rb"].each { |file| require file }

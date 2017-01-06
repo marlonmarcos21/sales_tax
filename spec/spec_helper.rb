@@ -1,4 +1,3 @@
 require 'rspec'
-require './lib/sales/product'
-require './lib/sales/invoice'
-require './lib/sales/tax'
+require 'bigdecimal'
+Dir["./lib/sales/*.rb"].each { |file| require file }
